@@ -6,13 +6,29 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds;
+import kotlinx.android.synthetic.main.activity_main.*
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView : AdView
+    //var dogList = arrayListOf<Row>()
+
+    var dogList = arrayListOf<Row>(
+        Row("Chow Chow", "Male", "4", "hell0", "hey"),
+        Row("Breed Pomeranian", "Female", "1", "hell0", "hey"),
+        Row("Golden Retriver", "Female", "3", "hell0", "hey"),
+        Row("Yorkshire Terrier", "Male", "5", "hell0","hey"),
+        Row("Pug", "Male", "4", "hell0", "hey"),
+        Row("Alaskan Malamute", "Male", "7", "hell0", "hey"),
+        Row("Shih Tzu", "Female", "5", "hell0", "hey")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val dogAdapter = MainListAdapter(this, dogList)
+        mainListView.adapter = dogAdapter
 
 
         MobileAds.initialize(this) {}
